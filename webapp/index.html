@@ -32,8 +32,8 @@
         var CURRENT_JSON_OBJECT;
         var CURRENT_FORMATTER;
 
-        var SYNCHRONIZE_URI = "/utils/synchronize";
-        var REFRESH_ROUTES_URI = "/utils/refresh_routes";
+        var SYNCHRONIZE_URI = "/instance/synchronize";
+        var REFRESH_ROUTES_URI = "/instance/refresh_routes";
 
         $(document).ready(function() {
             init();
@@ -108,7 +108,7 @@
         }
 
         function SYNC_AND_REFRESH() {
-            alert("Calling /utils/synchronize & /utils/refresh_routes ...");
+            alert("Calling /instance/synchronize & /utils/refresh_routes ...");
             $.ajax({
                 url: HOST + SYNCHRONIZE_URI,
                 type: 'GET',
@@ -180,6 +180,7 @@
                 complete: function(data) {
                     $('#server-response').html("<b>Server Response</b>:<br>" + JSON.stringify(data, null));
                     $('#server-response').show();
+                    SYNC_AND_REFRESH();
                 },
             });
         }
